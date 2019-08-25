@@ -7,4 +7,4 @@ Demo:
 
 How to run demo:
 ---------------
-Runnning demo script requires ![Kivy](https://github.com/kivy/kivy) and ![KivyMD](https://github.com/HeaTTheatR/KivyMD) to be installed. However, using ![`Animator`](animator) isn't dependent upon KivyMD.
+Runnning demo script requires ![Kivy](https://github.com/kivy/kivy) and ![KivyMD](https://github.com/HeaTTheatR/KivyMD) to be installed. However, using `![Animator](animator)` isn't dependent upon KivyMD.

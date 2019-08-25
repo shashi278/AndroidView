@@ -3,7 +3,7 @@ A repository to contain android view animations created using Kivy
 
 Demo:
 ----
-![AndroidView demo](README.md)
+![AndroidView demo](demo/demo.gif)
 
 How to run demo:
 ---------------

@@ -15,6 +15,7 @@ Drawer Button Demo:
 #### Dependencies:
 * [Kivy](https://github.com/kivy/kivy)
 * [KivyMD](https://github.com/HeaTTheatR/KivyMD)
+* Python 3 (Obviously)
 
 #### How to use?:
 * Currently no docs are avilable so kindly stick to demos for usage.

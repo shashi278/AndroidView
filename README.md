@@ -4,6 +4,7 @@ A repository to contain android view animations created using Kivy
 Demo:
 ----
 <li>Wahah</li>
+
 ![AndroidView demo](demo/demo.gif)
 
 How to run demo:

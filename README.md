@@ -12,10 +12,15 @@ Drawer Button Demo:
 
 ![AndroidView demo](demo/drawer_demo.gif)
 
+WirelessRippleButton:
+--------------------
+
+![AndroidView demo](demo/wireless_button_demo.gif)
+
 #### Dependencies:
 * [Kivy](https://github.com/kivy/kivy)
 * [KivyMD](https://github.com/HeaTTheatR/KivyMD)
 * Python 3 (Obviously)
 
 #### How to use?:
-* Currently no docs are avilable so kindly stick to demos for usage.
+* Currently no docs are avilable so kindly stick to demos for usages.

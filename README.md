@@ -1,5 +1,5 @@
 # AndroidView
-A repository to contain android view animations created using Kivy
+A repository to contain android view animations created using [Kivy](https://github.com/kivy/kivy)
 
 Widget Animator Demo:
 --------------------

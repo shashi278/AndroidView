@@ -5,17 +5,22 @@ Widget Animator Demo:
 --------------------
 * Runnning demo script requires [Kivy](https://github.com/kivy/kivy) and [KivyMD](https://github.com/HeaTTheatR/KivyMD) to be installed. However, using `Animator` isn't dependent upon KivyMD.
 
-![AndroidView demo](demo/demo.gif)
+![Animator demo](demo/demo.gif)
 
 Drawer Button Demo:
 ------------------
 
-![AndroidView demo](demo/drawer_demo.gif)
+![DrawerButton demo](demo/drawer_demo.gif)
 
 WirelessRippleButton:
 --------------------
 
-![AndroidView demo](demo/wireless_button_demo.gif)
+![WirelessRippleButton demo](demo/wireless_button_demo.gif)
+
+SuccessAnim:
+------------
+
+![SuccessAnim demo](demo/success_anim.gif)
 
 #### Dependencies:
 * [Kivy](https://github.com/kivy/kivy)

@@ -20,7 +20,7 @@ WirelessRippleButton:
 SuccessAnim:
 ------------
 
-![SuccessAnim demo](demo/success_anim.gif)
+![SuccessAnim demo](demo/success_anim.gif)                          ![FailureAnim demo](demo/failure_anim.gif)
 
 #### Dependencies:
 * [Kivy](https://github.com/kivy/kivy)

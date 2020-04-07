@@ -30,7 +30,7 @@ from kivymd.navigationdrawer import NavigationLayout, MDNavigationDrawer
 
 from kivy.properties import NumericProperty
 
-kv="""
+kv = """
 #:import MDLabel kivymd.label.MDLabel
 #:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
 #:import MDSeparator kivymd.cards.MDSeparator
@@ -115,69 +115,65 @@ DemoLayout:
 			color:[0,0,0,1]
 
 """
-class MyToolBar(BoxLayout,RectangularElevationBehavior):
-	opposite_colors= False
-	specific_text_color=[1,1,1,1]
-	title=""
 
-class MyNavDrawer(BoxLayout,RectangularElevationBehavior):
-	pass
+
+class MyToolBar(BoxLayout, RectangularElevationBehavior):
+    opposite_colors = False
+    specific_text_color = [1, 1, 1, 1]
+    title = ""
+
+
+class MyNavDrawer(BoxLayout, RectangularElevationBehavior):
+    pass
+
 
 class DrawerButton(MDIconButton):
-	angle= NumericProperty(0)
+    angle = NumericProperty(0)
 
-	def on_release(self):
-		if self.angle in [0,-180,-360]:
-			if self.angle==-360:
-				self.angle=0
+    def on_release(self):
+        if self.angle in [0, -180, -360]:
+            if self.angle == -360:
+                self.angle = 0
 
-			ang=self.angle-90
-			if self.icon=='menu':
-				icon='arrow-right'
-			else:
-				icon='menu'
+            ang = self.angle - 90
+            if self.icon == "menu":
+                icon = "arrow-right"
+            else:
+                icon = "menu"
 
-			anim=Animation(
-				d=0.08,
-				angle=ang
-			)
-			anim.bind(on_complete= lambda x,y:setattr(self, 'icon', icon))
+            anim = Animation(d=0.08, angle=ang)
+            anim.bind(on_complete=lambda x, y: setattr(self, "icon", icon))
 
-			anim+=Animation(
-				d=0.08,
-				angle=ang-90,
-			)
-			anim.start(self)
+            anim += Animation(d=0.08, angle=ang - 90,)
+            anim.start(self)
+
 
 class DemoLayout(BoxLayout):
-	def set_btn(self,btn):
-		if btn.angle in [0,-180,-360]:
-			if btn.angle==-360:
-				btn.angle=0
+    def set_btn(self, btn):
+        if btn.angle in [0, -180, -360]:
+            if btn.angle == -360:
+                btn.angle = 0
 
-			ang=btn.angle-90
-			if btn.icon=='menu':
-				icon='arrow-right'
-			else:
-				icon='menu'
+            ang = btn.angle - 90
+            if btn.icon == "menu":
+                icon = "arrow-right"
+            else:
+                icon = "menu"
 
-			anim=Animation(
-				d=0.1,
-				angle=ang
-			)
-			anim.bind(on_complete= lambda x,y:setattr(btn, 'icon', icon))
+            anim = Animation(d=0.1, angle=ang)
+            anim.bind(on_complete=lambda x, y: setattr(btn, "icon", icon))
 
-			anim+=Animation(
-				d=0.1,
-				angle=ang-90,
-			)
-			#anim.cancel_all(self)
-			anim.start(btn)
+            anim += Animation(d=0.1, angle=ang - 90,)
+            # anim.cancel_all(self)
+            anim.start(btn)
+
 
 class DrawerButtonDemo(App):
-	theme_cls= ThemeManager()
-	def build(self):
-		return Builder.load_string(kv)
+    theme_cls = ThemeManager()
 
-if __name__ == '__main__':
-	DrawerButtonDemo().run()
+    def build(self):
+        return Builder.load_string(kv)
+
+
+if __name__ == "__main__":
+    DrawerButtonDemo().run()

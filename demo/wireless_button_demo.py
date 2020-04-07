@@ -1,5 +1,6 @@
 import sys
-sys.path.append('../')
+
+sys.path.append("../")
 
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
@@ -9,9 +10,9 @@ from kivy.clock import Clock
 
 import time
 
-from button.wirelessripplebutton import WirelessRippleButton,render
+from button.wirelessripplebutton import WirelessRippleButton, render
 
-kv="""
+kv = """
 
 <DemoButton>:
 
@@ -46,23 +47,28 @@ DemoLayout:
 
 """
 
+
 class DemoButton(Button):
-	pass
+    pass
+
 
 class DemoLayout(FloatLayout):
-	def on_release(self, *args):
-		Clock.schedule_once(self.add_btn,3)
-	
-	def add_btn(self,_):
-		demoBtn= DemoButton()
-		self.add_widget(demoBtn)
+    def on_release(self, *args):
+        Clock.schedule_once(self.add_btn, 3)
+
+    def add_btn(self, _):
+        demoBtn = DemoButton()
+        self.add_widget(demoBtn)
+
 
 class MyButton(WirelessRippleButton):
-	pass
+    pass
+
 
 class DemoApp(App):
-	def build(self):
-		return Builder.load_string(kv+render)
+    def build(self):
+        return Builder.load_string(kv + render)
 
-if __name__ == '__main__':
-	DemoApp().run()
+
+if __name__ == "__main__":
+    DemoApp().run()

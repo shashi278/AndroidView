@@ -5,7 +5,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.animation import Animation
 from kivy.metrics import dp
 
-kv="""
+kv = """
 <SuccessAnim>:
 	canvas:
 		Color:
@@ -73,88 +73,68 @@ kv="""
 
 """
 
+
 class SuccessAnim(FloatLayout):
-	
-	def play(self):
-		self._initalize_circ()
-		self._initialize_tick()
-		
-		anim= Animation(
-			angle_start=self.angle_start,
-			angle_end=-51,
-			t='in_quad',
-			d=.2
-			)
-		anim.bind(on_complete=self._intermediate)
-		anim.stop_all(self)
-		anim.start(self)
+    def play(self):
+        self._initalize_circ()
+        self._initialize_tick()
 
+        anim = Animation(
+            angle_start=self.angle_start, angle_end=-51, t="in_quad", d=0.2
+        )
+        anim.bind(on_complete=self._intermediate)
+        anim.stop_all(self)
+        anim.start(self)
 
-	def _intermediate(self, wid, ins):
-		anim= Animation(
-			angle_start=-51,
-			angle_end=-51,
-			t='out_quad',
-			d=.15
-			)
-		anim&=self._tick_animation()
-		anim.stop_all(self)
-		anim.start(self)
+    def _intermediate(self, wid, ins):
+        anim = Animation(angle_start=-51, angle_end=-51, t="out_quad", d=0.15)
+        anim &= self._tick_animation()
+        anim.stop_all(self)
+        anim.start(self)
 
-	def _tick_animation(self):
-		x=self.ids.box_layout.center_x
-		y=self.ids.box_layout.center_y
+    def _tick_animation(self):
+        x = self.ids.box_layout.center_x
+        y = self.ids.box_layout.center_y
 
-		tick_props=["tick_x2","tick_y2","tick_x3","tick_y3"]
-		tick_vals=[x-dp(7),y-dp(10),x-dp(7),y-dp(10)]
-		anim=Animation(
-			**dict(zip(tick_props,tick_vals)),
-			d=.15
-			)
+        tick_props = ["tick_x2", "tick_y2", "tick_x3", "tick_y3"]
+        tick_vals = [x - dp(7), y - dp(10), x - dp(7), y - dp(10)]
+        anim = Animation(**dict(zip(tick_props, tick_vals)), d=0.15)
 
-		tick_props=["tick_x1","tick_y1","tick_x3","tick_y3"]
-		tick_vals=[x-dp(20),y+dp(8),x+dp(30),y+dp(15)]
-		anim+=Animation(
-			**dict(zip(tick_props,tick_vals)),
-			d=.2/10
-			)
+        tick_props = ["tick_x1", "tick_y1", "tick_x3", "tick_y3"]
+        tick_vals = [x - dp(20), y + dp(8), x + dp(30), y + dp(15)]
+        anim += Animation(**dict(zip(tick_props, tick_vals)), d=0.2 / 10)
 
-		tick_vals=[x-dp(7),y-dp(10), x+dp(30)+12,y+dp(15)+12]
-		anim+=Animation(
-			**dict(zip(tick_props,tick_vals)),
-			d=.2/6
-			)
+        tick_vals = [x - dp(7), y - dp(10), x + dp(30) + 12, y + dp(15) + 12]
+        anim += Animation(**dict(zip(tick_props, tick_vals)), d=0.2 / 6)
 
-		tick_vals=[x-dp(20),y+dp(8), x+dp(30),y+dp(15)]
-		anim+=Animation(
-			**dict(zip(tick_props,tick_vals)),
-			d=.2/6
-			)
+        tick_vals = [x - dp(20), y + dp(8), x + dp(30), y + dp(15)]
+        anim += Animation(**dict(zip(tick_props, tick_vals)), d=0.2 / 6)
 
-		return anim
+        return anim
 
+    def _initalize_circ(self):
+        self.angle_start = 140
+        self.angle_end = 140
 
-	def _initalize_circ(self):
-		self.angle_start=140
-		self.angle_end=140
+    def _initialize_tick(self):
+        x = self.ids.box_layout.center_x
+        y = self.ids.box_layout.center_y
 
-	def _initialize_tick(self):
-		x=self.ids.box_layout.center_x
-		y=self.ids.box_layout.center_y
+        self.tick_x1 = x - dp(33)
+        self.tick_y1 = y + dp(28)
 
-		self.tick_x1= x-dp(33)
-		self.tick_y1= y+dp(28)
+        self.tick_x2 = self.tick_x1
+        self.tick_y2 = self.tick_y1
 
-		self.tick_x2= self.tick_x1
-		self.tick_y2= self.tick_y1
+        self.tick_x3 = self.tick_x2
+        self.tick_y3 = self.tick_y2
 
-		self.tick_x3= self.tick_x2
-		self.tick_y3= self.tick_y2
 
 class DemoApp(App):
-	def build(self):
-		Builder.load_string(kv)
-		return Factory.SuccessAnim()
+    def build(self):
+        Builder.load_string(kv)
+        return Factory.SuccessAnim()
 
-if __name__ == '__main__':
-	DemoApp().run()
+
+if __name__ == "__main__":
+    DemoApp().run()

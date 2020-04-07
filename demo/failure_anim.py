@@ -5,7 +5,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.animation import Animation
 from kivy.metrics import dp
 
-kv="""
+kv = """
 <FailureAnim>:
 	canvas:
 		Color:
@@ -82,95 +82,110 @@ kv="""
 
 """
 
+
 class FailureAnim(FloatLayout):
-	
-	def play(self):
-		self._initalize_circ()
-		self._initialize_cross()
-		
-		anim= Animation(
-			angle_start_l=self.angle_start_l,
-			angle_end_l=315,
-			angle_start_r=self.angle_start_r,
-			angle_end_r=45,
-			#t='in_quad',
-			d=.2
-			)
-		anim.bind(on_complete=self._intermediate)
-		anim.stop_all(self)
-		anim.start(self)
+    def play(self):
+        self._initalize_circ()
+        self._initialize_cross()
 
+        anim = Animation(
+            angle_start_l=self.angle_start_l,
+            angle_end_l=315,
+            angle_start_r=self.angle_start_r,
+            angle_end_r=45,
+            # t='in_quad',
+            d=0.2,
+        )
+        anim.bind(on_complete=self._intermediate)
+        anim.stop_all(self)
+        anim.start(self)
 
-	def _intermediate(self, wid, ins):
-		anim= Animation(
-			angle_start_l=315,
-			angle_end_l=315,
-			angle_start_r=45,
-			angle_end_r=45,
-			#t='out_quad',
-			d=.15
-			)
-		anim&=self._cross_animation()
-		anim.stop_all(self)
-		anim.start(self)
+    def _intermediate(self, wid, ins):
+        anim = Animation(
+            angle_start_l=315,
+            angle_end_l=315,
+            angle_start_r=45,
+            angle_end_r=45,
+            # t='out_quad',
+            d=0.15,
+        )
+        anim &= self._cross_animation()
+        anim.stop_all(self)
+        anim.start(self)
 
-	def _cross_animation(self):
-		x=self.ids.box_layout.center_x
-		y=self.ids.box_layout.center_y
+    def _cross_animation(self):
+        x = self.ids.box_layout.center_x
+        y = self.ids.box_layout.center_y
 
-		cross_props=["cross_x2_r","cross_y2_r","cross_x2_l","cross_y2_l"]
-		cross_vals=[x-dp(24),y-dp(23),x+dp(24),y-dp(23)]
-		anim=Animation(
-			**dict(zip(cross_props,cross_vals)),
-			d=.15
-			)
-		
-		cross_props=["cross_x1_l","cross_y1_l","cross_x2_l","cross_y2_l",
-					"cross_x1_r","cross_y1_r","cross_x2_r","cross_y2_r"]
+        cross_props = ["cross_x2_r", "cross_y2_r", "cross_x2_l", "cross_y2_l"]
+        cross_vals = [x - dp(24), y - dp(23), x + dp(24), y - dp(23)]
+        anim = Animation(**dict(zip(cross_props, cross_vals)), d=0.15)
 
-		cross_vals=[x-dp(24)+13,y+dp(23)-13, x+dp(24)+17,y-dp(23)-17,
-					x+dp(24)-13,y+dp(23)-13, x-dp(24)-17,y-dp(23)-17]
+        cross_props = [
+            "cross_x1_l",
+            "cross_y1_l",
+            "cross_x2_l",
+            "cross_y2_l",
+            "cross_x1_r",
+            "cross_y1_r",
+            "cross_x2_r",
+            "cross_y2_r",
+        ]
 
-		anim+=Animation(
-			**dict(zip(cross_props,cross_vals)),
-			d=.2/6
-			)
+        cross_vals = [
+            x - dp(24) + 13,
+            y + dp(23) - 13,
+            x + dp(24) + 17,
+            y - dp(23) - 17,
+            x + dp(24) - 13,
+            y + dp(23) - 13,
+            x - dp(24) - 17,
+            y - dp(23) - 17,
+        ]
 
-		cross_vals=[x-dp(24),y+dp(23), x+dp(24),y-dp(23),
-					x+dp(24),y+dp(23), x-dp(24),y-dp(23)]
-		anim+=Animation(
-			**dict(zip(cross_props,cross_vals)),
-			d=.2/6
-			)
-			
-		return anim
+        anim += Animation(**dict(zip(cross_props, cross_vals)), d=0.2 / 6)
 
+        cross_vals = [
+            x - dp(24),
+            y + dp(23),
+            x + dp(24),
+            y - dp(23),
+            x + dp(24),
+            y + dp(23),
+            x - dp(24),
+            y - dp(23),
+        ]
+        anim += Animation(**dict(zip(cross_props, cross_vals)), d=0.2 / 6)
 
-	def _initalize_circ(self):
-		self.angle_start_l=180
-		self.angle_end_l=180
+        return anim
 
-		self.angle_start_r=180
-		self.angle_end_r=180
+    def _initalize_circ(self):
+        self.angle_start_l = 180
+        self.angle_end_l = 180
 
-	def _initialize_cross(self):
-		x=self.ids.box_layout.center_x
-		y=self.ids.box_layout.center_y
+        self.angle_start_r = 180
+        self.angle_end_r = 180
 
-		self.cross_x1_l= x-dp(33)
-		self.cross_y1_l= y+dp(30)
-		self.cross_x2_l= self.cross_x1_l
-		self.cross_y2_l= self.cross_y1_l
+    def _initialize_cross(self):
+        x = self.ids.box_layout.center_x
+        y = self.ids.box_layout.center_y
 
-		self.cross_x1_r= x+dp(33)
-		self.cross_y1_r= y+dp(30)
-		self.cross_x2_r= self.cross_x1_r
-		self.cross_y2_r= self.cross_y1_r
+        self.cross_x1_l = x - dp(33)
+        self.cross_y1_l = y + dp(30)
+        self.cross_x2_l = self.cross_x1_l
+        self.cross_y2_l = self.cross_y1_l
+
+        self.cross_x1_r = x + dp(33)
+        self.cross_y1_r = y + dp(30)
+        self.cross_x2_r = self.cross_x1_r
+        self.cross_y2_r = self.cross_y1_r
+
 
 class DemoApp(App):
-	def build(self):
-		Builder.load_string(kv)
-		return Factory.FailureAnim()
+    def build(self):
+        Builder.load_string(kv)
+        return Factory.FailureAnim()
 
-if __name__ == '__main__':
-	DemoApp().run()
+
+if __name__ == "__main__":
+    DemoApp().run()
